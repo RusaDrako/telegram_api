@@ -1,0 +1,12 @@
+{
+    "name": "RusaDrako/telegram_api",
+    "description": "API Telegram",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Petukhov Leonid",
+            "email": "f182@rambler.ru"
+        }
+    ],
+    "require": {}
+}
