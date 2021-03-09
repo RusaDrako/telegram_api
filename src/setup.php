@@ -42,7 +42,37 @@ class setup {
 
 	/** Привязываем бот */
 	private function _request($command, $post = []) {
-		return $this->bot->_curl($command, $post);
+		$result = $this->bot->_curl($command, $post);
+		return $result;
+	}
+
+
+
+
+
+	/** Привязываем бот */
+	private function _request_obj($command, $class, $post = []) {
+		$_result = $this->_request($command, $post);
+		$result = new object\result();
+		$result->set_bot($this->bot);
+		$result->result_type_obj($class);
+		$result->set_data($_result);
+		return $result;
+	}
+
+
+
+
+
+	/** Привязываем бот */
+	private function _request_arr($command, $class, $post = []) {
+		$_result = $this->_request($command, $post);
+		$result = new object\result();
+		$result->set_bot($this->bot);
+		$result->result_type_arr($class);
+		$result->set_data($_result);
+//		$result->result = $this->set_object('object\result', $_result);
+		return $result;
 	}
 
 
@@ -52,8 +82,7 @@ class setup {
 	/** Проверяет аутентификацию подключения к боту */
 	function getMe() {
 		$post = [];
-		$result = $this->_request('getMe', $post);
-		$result['result'] = $this->set_object('data\User', $result['result']);
+		$result = $this->_request_obj('getMe', 'User', $post);
 		$this->_info($result, __METHOD__);
 		return $result;
 	}
@@ -65,6 +94,7 @@ class setup {
 	/** Проверяет текущий статус вебхука */
 	function getWebhookInfo() {
 		$post = [];
+//		$result = $this->_request_obj('getWebhookInfo', 'User', $post);
 		$result = $this->_request('getWebhookInfo', $post);
 		$this->_info($result, __METHOD__);
 		return $result;
@@ -77,15 +107,7 @@ class setup {
 	/** Получает данные по последним сообщениям для бота (за последние сутки) */
 	function getUpdates($id = 0) {
 		$post = ['offset' => $id];
-		$result = $this->_request('getUpdates', $post);
-//		$this->_info($_result, __METHOD__);
-
-		$result['result'] = $this->set_object_arr('data\Update', $result['result']);
-
-/*		$result = [];
-		foreach ($_result['result'] as $k => $v) {
-			$result[] = $this->set_object('data\Update', $v);
-		}/**/
+		$result = $this->_request_arr('getUpdates', 'Update', $post);
 		$this->_info($result, __METHOD__);
 		return $result;
 	}
@@ -97,7 +119,7 @@ class setup {
 	/** */
 	function getUserProfilePhotos($id) {
 		$post = ['user_id' => $id];
-		$result = $this->_request('getUserProfilePhotos', $post);
+		$result = $this->_request_obj('getUserProfilePhotos', 'UserProfilePhotos', $post);
 		$this->_info($result, __METHOD__);
 		return $result;
 	}
@@ -109,8 +131,7 @@ class setup {
 	/** Получает актуальную информацию о чате (текущее имя пользователя для разговоров один на один, текущее имя пользователя, группы или канала и т. Д.). В случае успеха возвращает объект Chat.  */
 	function getChat($id) {
 		$post = ['chat_id' => $id];
-		$result = $this->_request('getChat', $post);
-		$result['result'] = $this->set_object('data\Chat', $result['result']);
+		$result = $this->_request_obj('getChat', 'Chat', $post);
 		$this->_info($result, __METHOD__);
 		return $result;
 	}
@@ -122,9 +143,8 @@ class setup {
 	/** Получает файл по ID */
 	function getFile($id) {
 		$post = ['file_id' => $id];
-		$result = $this->_request('getFile', $post);
-		$result['result'] = $this->set_object('data\File', $result['result']);
-		$this->_info($result, __METHOD__);
+		$result = $this->_request_obj('getFile', 'File', $post);
+//		$this->_info($result, __METHOD__);
 		return $result;
 	}
 
@@ -161,11 +181,12 @@ class setup {
 	/** */
 	function test() {
 		$this->getMe();
-		$this->getUpdates();
 		$this->getWebhookInfo();
+//		$this->getUpdates();
 		$this->getUserProfilePhotos(1175393600);
-		$this->getChat(1175393600);/**/
-		$this->getFile('AgACAgIAAxkBAAMxYEDUcsDFEQgzCVJfJCQuGVRcc2AAAlmwMRumEghKLzrYs4tVimrTagABny4AAwEAAwIAA3kAA4jjAAIeBA');/**/
+		$this->getChat(1175393600);
+		/**/
+//		$this->getFile('AgACAgIAAxkBAAMxYEDUcsDFEQgzCVJfJCQuGVRcc2AAAlmwMRumEghKLzrYs4tVimrTagABny4AAwEAAwIAA3kAA4jjAAIeBA');/**/
 	}
 
 

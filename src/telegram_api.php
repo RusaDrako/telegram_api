@@ -3,8 +3,8 @@
 namespace rd\telegram_api;
 
 require_once('autoload.php');
-/*require_once('setup.php');
-require_once('data/_object.php');
+
+
 
 /**
  *

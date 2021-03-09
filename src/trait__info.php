@@ -10,7 +10,7 @@ trait trait__info {
 
 
 	/** Выводит информацию */
-	private function _info($data, $title = null) {
+	protected function _info($data, $title = null) {
 //		print_info($data, $title);
 		echo '<pre style="border: 1px solid #777; background: #fdb; padding: 10px;">';
 		if ($title) {
