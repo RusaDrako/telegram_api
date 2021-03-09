@@ -8,5 +8,10 @@
             "email": "f182@rambler.ru"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "files": [
+            "autoload.php"
+        ]
+    }
 }
