@@ -1,11 +1,13 @@
 <?php
 
-namespace rd\telegram_api\data;
+namespace rd\telegram_api\object;
 
 /**
- * Чтобы сообщение с игрой выглядело более привлекательно, вы можете загрузить для игры анимацию с геймплее. Этот объект представляет собой файл анимации, который будет отображён в сообщении с игрой.
+ * Этот объект представляет собой файл анимации (видео в формате GIF или H.264 / MPEG-4 AVC без звука).
  */
-class Animation extends _data {
+class Animation extends _object {
+
+	use _trait__file;
 
 
 

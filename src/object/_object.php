@@ -1,12 +1,12 @@
 <?php
 
-namespace rd\telegram_api\data;
+namespace rd\telegram_api\object;
 //require_once('../trait__set_bot.php');
 //require_once('../trait__info.php');
 /**
  *
  */
-class _data {
+class _object {
 
 	use \rd\telegram_api\trait__set_bot;
 	/** Выводит информацию */
@@ -82,6 +82,7 @@ class _data {
 
 	/** */
 	final public function set_data($array) {
+//		$this->_info($array);
 		foreach ($array as $k => $v) {
 			$this->$k = $v;
 		}
@@ -103,6 +104,12 @@ class _data {
 
 	/** Подготовка данных к var_dump() и серилизации JSON (JsonSerializable)*/
 	protected function __preparationData($arr) {
+//		$arr['bot'] =$this->bot;
+/*		$arr = [
+			$this->data,
+			$this->obj,
+			$this->arr,
+		];/**/
 		foreach ($this->data as $k => $v) {
 			if ($v === null) { continue; }
 			$arr[$k] = $v;
@@ -139,6 +146,10 @@ class _data {
 		}
 		echo '<pre>';
 		print_r($this->data);
+		print_r($this->obj);
+//		print_r($this->obj_name);
+		print_r($this->arr);
+//		print_r($this->arr_name);
 		throw new \Exception("Вызов неизвестного свойства объекта: " . \get_called_class() . "->{$name}");
 	}
 
@@ -154,7 +165,8 @@ class _data {
 //			print_r($value);
 //			print_r($this->data_filter[$name]);
 //			print_r($this->filter);
-			$filter = $this->filter[$this->data_filter[$name]];
+			$filter_name = $this->data_filter[$name];
+			$filter = $this->filter[$filter_name];
 			$this->data[$name] = $filter($value);
 			return;
 		}
@@ -174,14 +186,18 @@ class _data {
 			}
 			foreach($value as $k => $v) {
 				$obj = new $class_name();
-				$obj->set_data($v);
 				$obj->set_bot($this->bot);
+				$obj->set_data($v);
 				$this->arr[$name][] = $obj;
 			}
 			return;
 		}
 		echo '<pre>';
 		print_r($this->data);
+		print_r($this->obj);
+//		print_r($this->obj_name);
+		print_r($this->arr);
+//		print_r($this->arr_name);/**/
 		throw new \Exception("Вызов неизвестного свойства объекта: " . \get_called_class() . "->{$name}");
 	}
 

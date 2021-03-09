@@ -1,11 +1,11 @@
 <?php
 
-namespace rd\telegram_api\data;
+namespace rd\telegram_api\object;
 
 /**
  *
  */
-class Update extends _data {
+class Update extends _object {
 
 
 

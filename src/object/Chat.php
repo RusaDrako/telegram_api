@@ -1,11 +1,11 @@
 <?php
 
-namespace rd\telegram_api\data;
+namespace rd\telegram_api\object;
 
 /**
  * Этот объект представляет собой чат.
  */
-class Chat extends _data {
+class Chat extends _object {
 
 	/** https://tlgrm.ru/docs/bots/api#chat */
 	function add_setting() {

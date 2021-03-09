@@ -1,11 +1,11 @@
 <?php
 
-namespace rd\telegram_api\data;
+namespace rd\telegram_api\object;
 
 /**
  * Этот объект представляет точку на карте.
  */
-class Location extends _data {
+class Location extends _object {
 
 
 

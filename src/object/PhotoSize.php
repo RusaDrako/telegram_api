@@ -1,11 +1,13 @@
 <?php
 
-namespace rd\telegram_api\data;
+namespace rd\telegram_api\object;
 
 /**
  * Этот объект представляет изображение определённого размера или превью файла / стикера.
  */
-class PhotoSize extends _data {
+class PhotoSize extends _object {
+
+	use _trait__file;
 
 
 

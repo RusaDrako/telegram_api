@@ -1,11 +1,11 @@
 <?php
 
-namespace rd\telegram_api\data;
+namespace rd\telegram_api\object;
 
 /**
  * Этот объект представляет бота или пользователя Telegram.
  */
-class User extends _data {
+class User extends _object {
 
 
 

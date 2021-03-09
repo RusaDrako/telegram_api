@@ -1,11 +1,11 @@
 <?php
 
-namespace rd\telegram_api\data;
+namespace rd\telegram_api\object;
 
 /**
  * Этот объект представляет файл, готовый к загрузке. Он может быть скачан по ссылке вида https://api.telegram.org/file/bot<token>/<file_path>. Ссылка будет действительна как минимум в течение 1 часа. По истечении этого срока она может быть запрошена заново с помощью метода getFile.
  */
-class File extends _data {
+class File extends _object {
 
 
 

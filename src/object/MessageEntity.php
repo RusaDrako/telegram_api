@@ -1,11 +1,11 @@
 <?php
 
-namespace rd\telegram_api\data;
+namespace rd\telegram_api\object;
 
 /**
- * Этот объект содержит информацию об одном варианте ответа в опросе.
+ * Этот объект представляет собой одну особую сущность в текстовом сообщении. Например, хэштеги, имена пользователей, URL-адреса и т.д.
  */
-class MessageEntity extends _data {
+class MessageEntity extends _object {
 
 
 

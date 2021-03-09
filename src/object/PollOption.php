@@ -1,11 +1,11 @@
 <?php
 
-namespace rd\telegram_api\data;
+namespace rd\telegram_api\object;
 
 /**
  * Этот объект содержит информацию об одном варианте ответа в опросе.
  */
-class PollOption extends _data {
+class PollOption extends _object {
 
 
 
