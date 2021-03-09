@@ -10,8 +10,11 @@
     ],
     "require": {},
     "autoload": {
+        "psr-4": {
+            "rd\\telegram_api\\": "src"
+        },
         "files": [
-            "autoload.php"
+            "src/autoload.php"
         ]
     }
 }

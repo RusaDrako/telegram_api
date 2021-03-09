@@ -1,6 +1,6 @@
 <?php
 
-namespace resources\telegram_api;
+namespace rd\telegram_api;
 
 require_once('autoload.php');
 /*require_once('setup.php');

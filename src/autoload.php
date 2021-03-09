@@ -1,6 +1,6 @@
 <?php
 
-namespace resources\telegram_api;
+namespace rd\telegram_api;
 
 
 
@@ -11,13 +11,19 @@ function autoload($dir, array $exclusion = []) {
 	$exclusion = array_merge([".",".."], $exclusion);
 	$result = [];
 	$cdir = scandir($dir);
+echo '<pre>';
+print_r($cdir);
+echo '</pre>';
 	foreach ($cdir as $key => $value) {
 		if (!in_array($value, $exclusion)) {
+			# Если есть маркер "удалённого" элемент
 			if (mb_substr($value, 0, 3) == '___') {
 				continue;
 			}
+			# Если это директория
 			if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
 				$result[$value] = autoload($dir . DIRECTORY_SEPARATOR . $value);
+			# Грузим только '*.php'
 			} elseif (substr($value, -4, 4) == '.php') {
 				require_once($dir . DIRECTORY_SEPARATOR . $value);
 				$result[] = $value;
@@ -27,11 +33,8 @@ function autoload($dir, array $exclusion = []) {
 	return $result;
 }
 
-
+require_once(__DIR__ . DIRECTORY_SEPARATOR . 'trait__set_bot.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . 'trait__info.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . 'data/_data.php');
 //print_r(autoload(__DIR__));
 autoload(__DIR__);
-
-/*require_once('_data.php');
-require_once('from.php');
-require_once('message.php');
-require_once('update.php');/**/
