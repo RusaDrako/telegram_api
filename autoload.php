@@ -18,7 +18,7 @@ function autoload($dir, array $exclusion = []) {
 			}
 			if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
 				$result[$value] = autoload($dir . DIRECTORY_SEPARATOR . $value);
-			} else {
+			} elseif (substr($value, -4, 4) == '.php') {
 				require_once($dir . DIRECTORY_SEPARATOR . $value);
 				$result[] = $value;
 			}
